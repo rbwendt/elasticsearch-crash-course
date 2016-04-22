@@ -136,20 +136,38 @@
 
 
 				<section style="text-align: left;">
-					<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
-					  <text x=300 y=200>
-							<animateTransform
-			            attributeName="transform"
-			            begin="0s"
-			            dur="2s"
-			            type="rotate"
-			            from="0 300 200"
-			            to="360 300 200"
-			            repeatCount="indefinite"
-			        />
-					    The End
-					  </text>
-					</svg>
+					<canvas height=300 width=768 id="c2"></canvas>
+					<script>
+					(function(){
+						var h = 300;
+						var w = 128 * 6
+						var c = document.getElementById('c2')
+						var ctx = c.getContext('2d');
+						ctx.font = "188px serif";
+						ctx.fillStyle = "rgba(255,255,200,256)"
+						ctx.fillText('The End',0,.9*h)
+
+						var i = 0
+						var L = 128
+						var slices = []
+						var places = []
+						for (i = 0; i < L; i++) {
+							slices[i] = ctx.getImageData(i * Math.floor(w/L),0,Math.floor(w/L),h)
+							places[i] = 0
+						}
+
+						var theta = 0
+						var dtheta = .1
+						setInterval(function() {
+							theta += dtheta
+							for (i = 0; i < L; i++) {
+								places[i] = (h/10) * Math.sin(theta + i * (2 * Math.PI) / L)
+
+								ctx.putImageData(slices[i], Math.floor(i * w/L), Math.floor(places[i]))
+							}
+						}, 50)
+					})()
+					</script>
 				</section>
 
 			</div>
