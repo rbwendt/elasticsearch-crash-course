@@ -136,6 +136,136 @@
 
 				<section>
 					<section>
+						<h2>types of queries</h2>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>match_all</code></h2>
+						<p>matches everything</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>match</code></h2>
+						<p>Finds matches in a given field. Goto for full text search</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>match_phrase</code></h2>
+						<p>Finds matches in a given field that are near each other</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>multi_match</code></h2>
+						<p>Like <code>match</code> but for multiple fields.</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>common_terms</code></h2>
+						<p>A match query that doesn't discount common words. E.g. "not"
+							is a stop word, but "not happy" and "happy" have different meanings.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>query_string</code></h2>
+						<p>
+							Query using <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">
+								lucene query string syntax</a>.
+						</p>
+						<p> e.g. <code>"query" : "this AND that OR thus"</code></p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>simple_query_string</code></h2>
+						<p>
+							A simpler, more robust version of the <code>query_string</code>
+							syntax suitable for exposing directly to users. </p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>term</code></h2>
+						<p>
+							An exact match query</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>terms</code></h2>
+						<p>
+							Return documents that match any of the given terms in the
+						specified field</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>range</code></h2>
+						<p>
+							Return documents where the specified field is in the specified
+							range.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>exists</code></h2>
+						<p>
+							Find documents where the field specified contains any
+							non-null value.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>exists</code></h2>
+						<p>
+							Find documents where the field specified contains any
+							non-null value.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>missing</code></h2>
+						<p>
+							Find documents where the field specified contains a
+							null value or is not set. Opposite of <code>exists</code>.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>regexp</code></h2>
+						<p>
+							Find documents where a given field matches the regex in the query.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>fuzzy</code></h2>
+						<p>
+							Find documents where a given field is similar to the query. Uses
+							Levenshtein
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>type</code></h2>
+						<p>
+							Find documents of the given type.
+						</p>
+					</section>
+					<section>
+						<p>types of queries</p>
+						<h2><code>ids</code></h2>
+						<p>
+							Find documents with the given ids.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>compound queries</h2>
+					<p>Operate on the results of other queries.</p>
+					<p>E.g. <code>bool</code> query can say match either this query or
+						that query.</p>
+				</section>
+
+				<section>
+					<section>
 						<h2>Let's learn by doing</h2>
 						<p>Demo: shoe store</p>
 					</section>
