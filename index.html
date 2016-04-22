@@ -292,6 +292,31 @@
 							The mapping API is fairly simple. Just supply a list of fields and
 							their types in JSON format.
 						</p>
+						<p>
+							This is where you specify what analysis you want done on your fields.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Aggregations</h2>
+						<p>For building summaries of data.</p>
+					</section>
+					<section>
+						<h2>Metrics ggregations</h2>
+						<p>Has aggregations like <code>min</code>, <code>max</code>,
+							<code>avg</code>, <code>percentiles</code>, etc.</p>
+					</section>
+					<section>
+						<h2>Bucket ggregations</h2>
+						<p>Makes buckets of documents. E.g. all shoes that are size 9.</p>
+					</section>
+					<section>
+						<h2>Pipeline ggregations</h2>
+						<p>Works with the results of other aggregations. E.g. go from
+							position to get velocity, or vice versa.
+						</p>
 					</section>
 				</section>
 
