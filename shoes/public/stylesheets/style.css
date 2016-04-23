@@ -3,6 +3,17 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+ul.results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+ul.results li {
+  width:320px;
+  list-style: none outside none;
+}
+
 a {
   color: #00B7FF;
 }

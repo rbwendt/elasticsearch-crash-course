@@ -8,13 +8,15 @@ var client = new elasticsearch.Client({
 var router = express.Router();
 
 function search(req, res, next) {
+  var query = {
+    match_all: {}
+  }
+
   var opts = {
     index: 'shoes',
     type: 'shoes',
     body: {
-      query: {
-        match_all: {}
-      }
+      query: query
     }
   }
   client.search(opts)

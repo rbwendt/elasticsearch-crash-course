@@ -5,14 +5,18 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
     <script src="/javascripts/vue.js"></script>
-
+    <link rel="stylesheet" href="stylesheets/style.css"/>
   </head>
   <body>
     <div id="app">
       <h1> {{ data.title }} </h1>
-      <ul>
+      <ul class="results">
         <li v-for="shoe in shoes">
-          {{ shoe.brand }} - {{ shoe.size }}
+          <img src="images/{{ shoe.brand}}.jpg">
+          <h4>
+            {{ shoe.brand }} - {{ shoe.size }}
+          </h4>
+          <p>${{ shoe.price}}</p>
         </li>
       </ul>
     </div>
