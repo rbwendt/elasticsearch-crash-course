@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Shoes</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="/javascripts/angularApp.js"></script>
+
+    <script src="/javascripts/vue.js"></script>
+
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="app">
+      <h1> {{ data.title }} </h1>
+      <ul>
+        <li v-for="shoe in shoes">
+          {{ shoe.brand }} - {{ shoe.size }}
+        </li>
+      </ul>
+    </div>
+    <script src="/javascripts/vueApp.js"></script>
   </body>
 </html>
