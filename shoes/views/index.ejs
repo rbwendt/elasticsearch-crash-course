@@ -10,12 +10,14 @@
   <body>
     <div id="app">
       <h1> {{ data.title }} </h1>
+      <input v-model="query" v-on:keyup.enter="fetchData">
       <ul class="results">
         <li v-for="shoe in shoes">
           <img src="images/{{ shoe.brand}}.jpg">
           <h4>
             {{ shoe.brand }} - {{ shoe.size }}
           </h4>
+          <p>{{ shoe.type }}</p>
           <p>${{ shoe.price}}</p>
         </li>
       </ul>

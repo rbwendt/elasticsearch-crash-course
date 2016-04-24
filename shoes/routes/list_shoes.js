@@ -7,6 +7,13 @@ function search(req, res, next) {
   var query = {
     match_all: {}
   }
+  if (req.query.q) {
+    query = {
+      match: {
+        "_all" : req.query.q
+      }
+    }
+  }
 
   var opts = {
     index: 'shoes',
