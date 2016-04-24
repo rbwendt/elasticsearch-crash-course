@@ -14,6 +14,15 @@ function search(req, res, next) {
       }
     }
   }
+  if (req.query.qs) {
+    query = {
+      query_string: {
+        default_field: 'brand',
+        "query" : req.query.qs
+      }
+    }
+  }
+
 
   var opts = {
     index: 'shoes',
