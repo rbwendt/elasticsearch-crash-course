@@ -12,7 +12,17 @@
       <h1> {{ data.title }} </h1>
       <input v-model="query" placeholder="query" v-on:keyup.enter="fetchData">
       <input v-model="querystring" placeholder="query_string" v-on:keyup.enter="fetchData">
-      <ul class="results">
+      <ul class="flex aggregations">
+        <li v-for="aggregation in aggregations">
+          {{ aggregation.field }}
+          <ul>
+            <li v-for="value in aggregation.values">
+              {{ value.key }} ({{ value.doc_count }})
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="flex results">
         <li v-for="shoe in shoes">
           <img src="images/{{ shoe.brand}}.jpg">
           <h4>

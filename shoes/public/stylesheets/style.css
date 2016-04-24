@@ -3,7 +3,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-ul.results {
+ul.flex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

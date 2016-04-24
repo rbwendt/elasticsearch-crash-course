@@ -3,7 +3,8 @@ vm = new Vue({
   data: {
     shoes: {},
     query: '',
-    querystring: ''
+    querystring: '',
+    aggregations: {}
   },
   methods: {
     fetchData: function() {
@@ -11,8 +12,9 @@ vm = new Vue({
       var self = this
       xhr.open('GET', 'list-shoes?q=' + self.query + '&qs=' + self.querystring)
       xhr.onload = function() {
-        console.log(JSON.parse(xhr.responseText))
-        self.shoes = JSON.parse(xhr.responseText)
+        response = JSON.parse(xhr.responseText)
+        self.shoes = response.hits
+        self.aggregations = response.aggregations
       }
       xhr.send()
     }
