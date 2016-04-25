@@ -24,7 +24,7 @@
       </ul>
       <ul class="flex results">
         <li v-for="shoe in shoes">
-          <img src="images/{{ shoe.brand}}.jpg">
+          <img v-bind:src="'images/' + shoe.brand + '.jpg'">
           <h4>
             {{ shoe.brand }} - {{ shoe.size }}
           </h4>
