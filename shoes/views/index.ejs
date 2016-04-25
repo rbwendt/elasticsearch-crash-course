@@ -16,7 +16,7 @@
         <li v-for="aggregation in aggregations">
           {{ aggregation.field }}
           <ul>
-            <li v-for="value in aggregation.values">
+            <li v-for="value in aggregation.values" v-on:click="setAgg(aggregation.field, value.key)">
               {{ value.key }} ({{ value.doc_count }})
             </li>
           </ul>

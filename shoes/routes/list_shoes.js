@@ -7,7 +7,7 @@ var aggregationFields = ['color', 'brand', 'size']
 
 function generateAggregationRequest(aggregationFields) {
   return aggregationFields.reduce(function (agg, field) {
-    agg[field + 's'] = {
+    agg[field] = {
       terms: {
         field: field,
         size: 1000
@@ -29,13 +29,19 @@ function search(req, res, next) {
     }
   }
   if (req.query.qs) {
-    query = {
-      query_string: {
-        default_field: 'brand',
-        "query" : req.query.qs
-      }
+    query[query_string] = {
+      default_field: 'brand',
+      "query" : req.query.qs
     }
   }
+  var filters = aggregationFields.reduce(function(filters, field) {
+    if (req.query[field]) {
+      var o = {}
+      o[field] = req.query[field] 
+      filters.push({ "term" :  o})
+    }
+    return filters
+  }, [])
 
   var opts = {
     index: 'shoes',
@@ -43,6 +49,13 @@ function search(req, res, next) {
     body: {
       query: query,
       aggs: generateAggregationRequest(aggregationFields)
+    }
+  }
+  if (!!filters.length) {
+    opts.body.filter = {
+      bool: {
+        must: filters
+      }
     }
   }
   client.search(opts)
