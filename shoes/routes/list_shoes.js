@@ -3,6 +3,20 @@ var client = require('../src/client')
 
 var router = express.Router();
 
+var aggregationFields = ['color', 'brand', 'size']
+
+function generateAggregationRequest(aggregationFields) {
+  return aggregationFields.reduce(function (agg, field) {
+    agg[field + 's'] = {
+      terms: {
+        field: field,
+        size: 1000
+      }
+    }
+    return agg
+  }, {})
+}
+
 function search(req, res, next) {
   var query = {
     match_all: {}
@@ -28,26 +42,7 @@ function search(req, res, next) {
     type: 'shoes',
     body: {
       query: query,
-      aggs: {
-        "colors": {
-          "terms": {
-            "field": "color",
-            "size": 1000
-          }
-        },
-        "brands": {
-          "terms": {
-            "field": "brand",
-            "size": 1000
-          }
-        },
-        "sizes": {
-          "terms": {
-            "field": "size",
-            "size": 1000
-          }
-        }
-      }
+      aggs: generateAggregationRequest(aggregationFields)
     }
   }
   client.search(opts)
