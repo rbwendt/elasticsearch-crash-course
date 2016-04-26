@@ -18,30 +18,37 @@ function generateAggregationRequest(aggregationFields) {
 }
 
 function search(req, res, next) {
-  var query = {
-    match_all: {}
-  }
+
+  var musts = []
   if (req.query.q) {
-    query = {
+    musts.push({
       match: {
         "_all" : req.query.q
       }
-    }
+    })
   }
   if (req.query.qs) {
-    query[query_string] = {
+    musts.push({
       default_field: 'brand',
       "query" : req.query.qs
-    }
+    })
   }
-  var filters = aggregationFields.reduce(function(filters, field) {
+  aggregationFields.map(function(field) {
     if (req.query[field]) {
       var o = {}
-      o[field] = req.query[field] 
-      filters.push({ "term" :  o})
+      o[field] = req.query[field]
+      musts.push({ "term" :  o})
     }
-    return filters
-  }, [])
+  })
+  var query = {
+    constant_score: {
+      filter: {
+        bool: {
+          must: musts
+        }
+      }
+    }
+  }
 
   var opts = {
     index: 'shoes',
@@ -51,13 +58,8 @@ function search(req, res, next) {
       aggs: generateAggregationRequest(aggregationFields)
     }
   }
-  if (!!filters.length) {
-    opts.body.filter = {
-      bool: {
-        must: filters
-      }
-    }
-  }
+
+
   client.search(opts)
   .then(function (resp) {
     var aggregations = []

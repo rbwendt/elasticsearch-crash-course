@@ -28,7 +28,6 @@ vm = new Vue({
     },
     setAgg: function(field, key) {
       this[field] = key
-      console.log(field, self[field])
       this.fetchData()
     }
   }
