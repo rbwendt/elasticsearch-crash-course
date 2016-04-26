@@ -28,7 +28,9 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-
+		<style>
+			section h2 code {text-transform: lowercase}
+		</style>
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -202,14 +204,7 @@
 							range.
 						</p>
 					</section>
-					<section>
-						<p>types of queries</p>
-						<h2><code>exists</code></h2>
-						<p>
-							Find documents where the field specified contains any
-							non-null value.
-						</p>
-					</section>
+
 					<section>
 						<p>types of queries</p>
 						<h2><code>exists</code></h2>
@@ -332,11 +327,11 @@
 					</section>
 					<section>
 						<h2>Shoe store</h2>
-						<p>Sells a bunch of shoes</p>
+						<p>Sells a bunch of shoes &mdash; results pages</p>
 					</section>
 					<section>
 						<h2>Shoe Store</h2>
-						<p>Track sales</p>
+						<p>Track sales &mdash; analytics</p>
 					</section>
 				</section>
 
