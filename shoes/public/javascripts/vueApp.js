@@ -7,7 +7,24 @@ var queries = {
   query_string: `{"query_string": {
    "default_field": "brand",
    "query": "blundstone AND size:7"
-}}`
+}}`,
+  term: `{"query": {"term": {
+   "brand": "nike"
+}}}`,
+  range: `{
+   "query":{ "range" : {
+        "price" : {
+            "gte" : 90,
+            "lte" : 100
+        }
+    }}
+}`,
+  regexp: `{"query": {
+        "regexp": {
+            "brand": "n.*"
+        }
+    }
+}`
 }
 
 vm = new Vue({

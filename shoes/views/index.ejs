@@ -28,6 +28,9 @@
         <textarea v-model="jsonQuery"></textarea>
         <button v-on:click="switchQuery('match')">match</button>
         <button v-on:click="switchQuery('query_string')">query_string</button>
+        <button v-on:click="switchQuery('term')">term</button>
+        <button v-on:click="switchQuery('range')">range</button>
+        <button v-on:click="switchQuery('regexp')">regexp</button>
 
         <input type="button" value="send" v-on:click="fetchData">
       </div>
