@@ -50,6 +50,10 @@ function search(req, res, next) {
     }
   }
 
+  if (req.query.a) {
+    query = JSON.parse(req.query.a)
+  }
+
   var opts = {
     index: 'shoes',
     type: 'shoes',

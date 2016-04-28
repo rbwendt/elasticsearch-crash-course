@@ -17,3 +17,9 @@ ul.results li {
 a {
   color: #00B7FF;
 }
+
+textarea {
+  width: 50%;
+  height: 200px;
+  display: block;
+}
