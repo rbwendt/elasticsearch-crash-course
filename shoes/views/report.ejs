@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shoes</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src="/javascripts/vue.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+  </head>
+  <body>
+    test
+    <div id="app">
+      <input type="button" value="switch modes" v-on:click="toggleMode">
+      <div v-if="mode">
+        <input v-model="query" placeholder="query" v-on:keyup.enter="fetchData">
+        <input v-model="querystring" placeholder="query_string" v-on:keyup.enter="fetchData">
+        <ul class="flex aggregations">
+          <li v-for="aggregation in aggregations">
+            {{ aggregation.field }}
+            <ul>
+              <li v-for="value in aggregation.values" v-on:click="setAgg(aggregation.field, value.key)">
+                {{ value.key }} ({{ value.doc_count }})
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div v-if="!mode">
+        <textarea v-model="jsonQuery"></textarea>
+        <button v-on:click="switchQuery('match')">match</button>
+        <button v-on:click="switchQuery('query_string')">query_string</button>
+        <button v-on:click="switchQuery('term')">term</button>
+        <button v-on:click="switchQuery('range')">range</button>
+        <button v-on:click="switchQuery('regexp')">regexp</button>
+
+        <input type="button" value="send" v-on:click="fetchData">
+      </div>
+      <ul class="flex results">
+        <li v-for="shoe in shoes">
+          <img v-bind:src="'images/' + shoe.brand + '.jpg'">
+          <h4>
+            {{ shoe.brand }} - {{ shoe.size }}
+          </h4>
+          <p>{{ shoe.type }}</p>
+          <p>${{ shoe.price}}</p>
+        </li>
+      </ul>
+    </div>
+    <script src="/javascripts/vueApp.js"></script>
+  </body>
+</html>

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var reports = require('./routes/report');
 var makeRecords = require('./routes/make_records');
 var listShoes = require('./routes/list_shoes');
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/reports', reports)
 app.use('/make-records', makeRecords);
 app.use('/list-shoes', listShoes);
 
