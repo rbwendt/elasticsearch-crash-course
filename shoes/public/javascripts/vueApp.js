@@ -4,10 +4,11 @@ var queries = {
   match: `{"query": {"match": {
    "_all": "blundstone 7"
 }}}`,
-  query_string: `{"query_string": {
+  query_string: `{"query":{
+    "query_string": {
    "default_field": "brand",
    "query": "blundstone AND size:7"
-}}`,
+}}}`,
   term: `{"query": {"term": {
    "brand": "nike"
 }}}`,
