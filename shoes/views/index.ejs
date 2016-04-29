@@ -11,8 +11,8 @@
     <div id="app">
       <input type="button" value="switch modes" v-on:click="toggleMode">
       <div v-if="mode">
-        <input v-model="query" placeholder="query" v-on:keyup.enter="fetchData">
-        <input v-model="querystring" placeholder="query_string" v-on:keyup.enter="fetchData">
+        <!--input v-model="query" placeholder="query" v-on:keyup.enter="fetchData">
+        <input v-model="querystring" placeholder="query_string" v-on:keyup.enter="fetchData"-->
         <ul class="flex aggregations">
           <li v-for="aggregation in aggregations">
             {{ aggregation.field }}
